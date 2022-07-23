@@ -1,0 +1,45 @@
+{
+  "header": {
+    "0": " #1ère application intelligente de suivi du temps pour les équipes au bureau, mobiles et à distance. "
+  },
+
+  "footer": {
+    "0": " En cliquant sur le bouton ci-dessus, vous acceptez nos conditions de service et nos politiques de confidentialité. "
+  },
+
+  "SignIn": {
+    "0": " Connexion "
+  },
+
+  "SignUp": {
+    "0": " Inscription "
+  },
+
+  "Button": {
+    "0": "C'est parti ! "
+  },
+
+  "ButtonGoogle": {
+    "0": "S'inscrire avec Google",
+    "1": " Se connecter avec Google "
+  },
+
+  "FirstName": {
+    "0": " Prénom "
+  },
+
+  "LastName": {
+    "0": " Nom "
+  },
+
+  "Password": {
+    "0": " Mot de passe "
+  },
+
+  "CheckList": {
+    "0": " • Contenir au moins une lettre ",
+    "1": " • Fair au moins 6 caractères  ",
+    "2": " • Contenir au moins un caractère spécial ",
+    "3": " • Contenir au moins un chiffre  "
+  }
+}

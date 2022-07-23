@@ -1,0 +1,45 @@
+{
+  "header": {
+    "0": " #1 Intelligent Time Tracking App for In Office, Mobile and Remote Teams. "
+  },
+
+  "footer": {
+    "0": " By clicking the button above, you agree to our terms of services and privacy policies "
+  },
+
+  "SignIn": {
+    "0": " Sign In "
+  },
+
+  "SignUp": {
+    "0": " Sign Up "
+  },
+
+  "Button": {
+    "0": " Let's Go! "
+  },
+
+  "ButtonGoogle": {
+    "0": " Sign Up with Google ",
+    "1": " Sign In with Google "
+  },
+  
+  "FirstName": {
+    "0": " FirstName "
+  },
+
+  "LastName": {
+    "0": " LastName "
+  },
+
+  "Password": {
+    "0": " Password "
+  },
+  
+  "CheckList": {
+    "0": " • Contain at least one letter",
+    "1": " • Contain at least 6 characters ",
+    "2": " • Contain at least one special character ",
+    "3": " • Contain at least one number "
+  }
+}
