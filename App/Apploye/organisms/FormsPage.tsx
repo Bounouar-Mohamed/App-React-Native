@@ -24,7 +24,7 @@ export default function FormsPage() {
 
                 <ButtonSwitch handleChange={toggler} />
 
-                {toggle ?
+                {toggle == false ?
                     <PhoneLogin /> : <Registration tpassword={''} setTpassword={''}/>}
 
         </View>

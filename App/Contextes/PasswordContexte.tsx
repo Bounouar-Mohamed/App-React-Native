@@ -8,40 +8,36 @@ export type User = {
     setPassword: any;
     email: any
     setEmail: any
-    Auth:any,
-    setAuth:any
 
 }
 
 export const PasswordContext = React.createContext<User>({
-        password:"",
-        setPassword:"",
-        email:"",
-        setEmail:"",
-        Auth:false,
-        setAuth:false
-    });
+    password: "",
+    setPassword: "",
+    email: "",
+    setEmail: "",
+
+    
+});
 
 
-const PasswordProvider= ({ children }: any) => {
+const PasswordProvider = ({ children }: any) => {
 
 
     const [password, setPassword] = useState<User>();
     const [email, setEmail] = useState<User>();
-    const [Auth, setAuth] = useState<User>();
 
-    console.log('contexte', password)
 
-    
+
     return (
 
         <PasswordContext.Provider value={{
             password, setPassword,
             email, setEmail,
-            Auth,setAuth
+
         }}>
 
-            { children }
+            {children}
 
         </PasswordContext.Provider>
 

@@ -3,35 +3,34 @@ import * as React from 'react'
 
 
 export type Auth = {
-    authData: any, setAuthData: any
+
+    authData: string | any,
+    setAuthData: string | any
 
 }
 
-function Logout() {
-    return 0
-}
 
-export const AuthContext = React.createContext<Auth | boolean>({ authData: false, setAuthData: false });
+export const AuthContext = React.createContext<Auth>({
+
+    authData: "",
+    setAuthData: ""
+
+});
 
 
 const AuthProvider = (props: any) => {
 
 
-    const [authData, setAuthData] = useState<Auth | boolean>(false);
+    const [authData, setAuthData] = useState<Auth | string>("0");
 
-
-    // const handleAuth = () => {
-    //     setAuthData(!authData);
-    //     console.log('handleAuth',authData)
-    // };
-
-    // const data = [authData, handleAuth]
-
+    console.log('contexte Auth', authData)
 
     return (
 
         <AuthContext.Provider value={{
+
             authData, setAuthData
+
         }}>
 
             {props.children}

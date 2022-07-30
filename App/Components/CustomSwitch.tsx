@@ -1,6 +1,9 @@
 import  {useState} from 'react'; 
-import {StyleSheet, Text, View, TouchableOpacity, ColorValue} from 'react-native';
+import {StyleSheet, Text, View,TouchableOpacity, ColorValue} from 'react-native';
 import * as React from 'react'
+import SwitchSelector from "react-native-switch-selector";
+import context from 'react-bootstrap/esm/AccordionContext';
+
  
 
 
@@ -9,8 +12,8 @@ export interface toogle {
 
     selectionMode: any,
     roundCorner: any,
-    option1: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined,
-    option2: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined,
+    option1: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null ,
+    option2: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null ,
     onSelectSwitch: (arg0: any) => void,
     selectionColor: ColorValue | undefined
 
@@ -85,3 +88,9 @@ const CustomSwitch = (props:toogle) => {
 }
 
 export default CustomSwitch;
+
+
+
+
+
+

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useState, useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PasswordContext } from '../../Contextes/PasswordContexte';
-import { Text, View, TextInput, Alert, StyleSheet, Pressable } from "react-native";
+import { Text, View, TextInput, Alert, StyleSheet, Pressable, ImageBackground } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { useForm, Controller } from "react-hook-form";
 import Footer from '../atoms/Footer';
@@ -10,7 +10,6 @@ import CheckList from './CheckList';
 import axios from 'axios';
 import { UserContext } from '../../Contextes/ProfileContexte';
 import { AuthContext } from '../../Contextes/AuthContext';
-
 
 
 
@@ -59,7 +58,7 @@ export default function Registration(props: Password) {
 
 
 
-    const navigation = useNavigation<any>();
+    // const navigation = useNavigation<any>();
 
     const InfoUser = useContext(UserContext);
     const Auth = useContext(AuthContext);
@@ -87,12 +86,12 @@ export default function Registration(props: Password) {
             .then(response => {
                 if (response.data.message == "Login") {
 
-                    console.log("Login ")
-                    navigation.navigate('Profile')
-                    Auth?.setAuthData("1")
+                    console.log("Login")
+                    // navigation.navigate('Profile')
+                    // Auth?.setAuthData("1")
                 }
                 else {
-                    Alert.alert(" Email déjà existant !!")
+                    Alert.alert("Email déjà existant !!")
                 }
 
             }).catch(error => {
@@ -115,7 +114,7 @@ export default function Registration(props: Password) {
         if (user !== undefined) {
 
             console.log("user", user)
-            InfoUser?.setName(user!.firstname)
+            InfoUser?.setFirstName(user!.firstname)
             InfoUser?.setLastName(user!.lastname)
             InfoUser?.setEmail(user!.email)
         }
@@ -192,6 +191,8 @@ export default function Registration(props: Password) {
         },
 
         ButtonGoogle: {
+
+            flexDirection: "row",
             borderRadius: 10,
             height: 40,
             marginTop: 15,
@@ -200,18 +201,31 @@ export default function Registration(props: Password) {
             backgroundColor: '#ffffff',
 
         },
-        TextGoogle: {
-            textAlign: 'center',
-            marginTop: 10,
-            color: '#000000',
+
+        BackgroundGoogle: {
+            marginTop: 3,
+            marginLeft: -50,
+            height: '90%',
+            width: '90%'
 
         },
+
+        TextGoogle: {
+
+            textAlign: 'center',
+            marginLeft: -80,
+            marginTop: 10,
+            fontSize: 12,
+            color: '#000000',
+        },
+
         CheckList: {
             textAlign: 'center',
             marginTop: 10,
             color: '#000000',
 
         },
+        
         Footer: {
             position: 'absolute',
             height: 70,
@@ -332,6 +346,7 @@ export default function Registration(props: Password) {
 
             <Pressable onPress={handleSubmit(submitLogin)} style={styles.ButtonGoogle}>
 
+                <ImageBackground source={require('./../../Assets/Google.png')} style={styles.BackgroundGoogle} resizeMode='contain' />
                 <Text style={styles.TextGoogle}>{t('ButtonGoogle.1')}</Text>
 
             </Pressable>

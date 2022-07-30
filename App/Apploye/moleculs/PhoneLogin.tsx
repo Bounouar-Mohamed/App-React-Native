@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useTranslation } from 'react-i18next';
-import { Text, View, TextInput, Button, Alert, StyleSheet, Pressable } from "react-native";
+import { Text, View, TextInput, Button, Alert, StyleSheet, Pressable, ImageBackground } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import PostLogin from '../../Services/PostLogin';
 import { useCookies } from "react-cookie";
@@ -8,6 +8,8 @@ import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../Contextes/ProfileContexte';
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../../Contextes/AuthContext';
+import { PasswordContext } from '../../Contextes/PasswordContexte';
+import async from '../../Services/GetProfile';
 
 
 export type UserConnectForm = {
@@ -24,11 +26,12 @@ type User = {
     email: string;
 }
 
-export default function PhoneLogin() {
+export default function PhoneLogin () {
 
     const InfoUser = useContext(UserContext);
-    const Auth = useContext(AuthContext);
-    console.log(useContext(AuthContext))
+    const { setAuthData } = useContext(AuthContext);
+
+
 
 
     const { control, handleSubmit, resetField, formState: { errors } } = useForm({
@@ -42,15 +45,13 @@ export default function PhoneLogin() {
     const [user, setUser] = useState<User>()
 
 
-    const navigation = useNavigation<any>();
+    // const navigation = useNavigation<any>();
 
-
-    const submitLogin = async (data: UserConnectForm) => {
+    const submitLogin = (data: UserConnectForm) => {
 
         resetField("email");
         resetField("password");
         console.log(data)
-
 
 
         PostLogin(data).then(response => {
@@ -65,15 +66,15 @@ export default function PhoneLogin() {
 
                 setUser(response.data.user[0])
                 console.log("login")
-
+                setAuthData('1')
                 // navigation.navigate('Profile')
-
+ 
             }
             else {
 
                 let error = "Email ou Mot de passe incorrect !!"
-                // console.log(response)
-                Alert.alert(error)
+                // console.log(error)
+                // Alert.alert(error)
             }
 
         }).catch(error => {
@@ -87,7 +88,7 @@ export default function PhoneLogin() {
         if (user !== undefined) {
 
             console.log("user", user)
-            InfoUser?.setName(user!.firstname)
+            InfoUser?.setFirstName(user!.firstname)
             InfoUser?.setLastName(user!.lastname)
             InfoUser?.setEmail(user!.email)
 
@@ -106,6 +107,7 @@ export default function PhoneLogin() {
             marginTop: 250,
             marginLeft: 20
         },
+
         Email: {
             height: 40,
             width: 320,
@@ -114,9 +116,11 @@ export default function PhoneLogin() {
             padding: 10,
             borderBottomWidth: 1,
         },
+
         ErrorEmail: {
             color: '#FF0000'
         },
+
         Password: {
             height: 40,
             width: 320,
@@ -124,9 +128,11 @@ export default function PhoneLogin() {
             padding: 10,
             borderBottomWidth: 1,
         },
+
         ErrorPassword: {
             color: '#FF0000'
         },
+
         ButtonSubmit: {
             borderRadius: 10,
             height: 40,
@@ -135,6 +141,7 @@ export default function PhoneLogin() {
             borderWidth: 1,
             backgroundColor: '#48C029',
         },
+
         TextSubmit: {
             textAlign: 'center',
             marginTop: 10,
@@ -142,6 +149,8 @@ export default function PhoneLogin() {
         },
 
         ButtonGoogle: {
+
+            flexDirection: "row",
             borderRadius: 10,
             height: 40,
             marginTop: 15,
@@ -150,9 +159,21 @@ export default function PhoneLogin() {
             backgroundColor: '#ffffff',
 
         },
+
+        BackgroundGoogle: {
+            marginTop: 3,
+            marginLeft: -50,
+            height: '90%',
+            width: '90%'
+
+        },
+
         TextGoogle: {
+
             textAlign: 'center',
+            marginLeft: -80,
             marginTop: 10,
+            fontSize: 12,
             color: '#000000',
 
         },
@@ -222,6 +243,7 @@ export default function PhoneLogin() {
 
             <Pressable onPress={handleSubmit(submitLogin)} style={styles.ButtonGoogle}>
 
+                <ImageBackground source={require('./../../Assets/Google.png')} style={styles.BackgroundGoogle} resizeMode='contain' />
                 <Text style={styles.TextGoogle}>{t('ButtonGoogle.1')}</Text>
 
             </Pressable>
