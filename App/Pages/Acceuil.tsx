@@ -6,10 +6,11 @@ import { Popover } from '@ant-design/react-native';
 import axios from 'axios';
 import { Text, View, Linking, Image, StyleSheet, ViewStyle, TextStyle, ImageStyle, StatusBar, TouchableOpacity, ScrollView, Pressable } from 'react-native';
 import React from 'react';
-
+import Config from 'react-native-config';
 
 
 function Acceuil() {
+
 
 
 
@@ -38,7 +39,10 @@ function Acceuil() {
         }
         console.log(data)
 
-        axios.post('https://first-server-express.herokuapp.com/articles', data)
+        const url = Config.API_URL + '/articles'
+
+
+        axios.post(url, data)
             .then(response => {
                 console.log("Status: ", response.status);
                 console.log("Data: ", response.data);
@@ -137,12 +141,12 @@ function Acceuil() {
                     <View style={styles.Article1}>
                         {/* <Pressable onPress={HandleClick} style={styles.ButtonGoogle}> */}
 
-                            <Image
-                                style={styles.Image1}
-                                source={require('../Assets/Cartouche.jpg')}
+                        <Image
+                            style={styles.Image1}
+                            source={require('../Assets/Cartouche.jpg')}
 
-                            // onMouseOver={() => setToHighlight(1)}
-                            />
+                        // onMouseOver={() => setToHighlight(1)}
+                        />
                         {/* </Pressable> */}
                         <Text onPress={() => Linking.openURL('https://www.amazon.fr/HP-Cartouches-Couleurs-Authentiques-6ZD17AE/dp/B08T1HR5CS/ref=zg-bs_computers_2/259-8610103-1920254?pd_rd_w=iH7mW&pf_rd_p=f492caf8-8007-48d2-883a-38800a772222&pf_rd_r=4VE7TFD6WWMNQ3VCYTJA&pd_rd_r=af764986-a928-4e4a-be83-c0f2f5c83cb5&pd_rd_wg=kyL5B&pd_rd_i=B08T1HR5CS&psc=1')}>
                             HP 305 Pack de 2 Cartouches d'Encre Noire et Trois Couleurs Authentiques (6ZD17AE)

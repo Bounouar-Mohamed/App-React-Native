@@ -41,5 +41,9 @@
     "1": " • Fair au moins 6 caractères  ",
     "2": " • Contenir au moins un caractère spécial ",
     "3": " • Contenir au moins un chiffre  "
+  },
+
+  "switchLanguage": {
+    "0": "Sélectionner la langue:"
   }
 }

@@ -28,6 +28,7 @@ const CustomSwitch = (props:toogle) => {
         props.onSelectSwitch(val);
     };
 
+
     return (
 
         <View>
@@ -35,7 +36,7 @@ const CustomSwitch = (props:toogle) => {
                 style={{
                     height: 44,
                     width: 215,
-                    backgroundColor: '#aedfa1',
+                    backgroundColor: '#154c79',
                     borderRadius: getRoundCorner ? 25 : 0,
                     borderWidth: 0,
                     borderColor: props.selectionColor,
@@ -49,14 +50,14 @@ const CustomSwitch = (props:toogle) => {
                     style={{
                         flex: 1,
 
-                        backgroundColor: getSelectionMode == 1 ? props.selectionColor : '#aedfa1',
+                        backgroundColor: getSelectionMode == 1 ? props.selectionColor : '#154c79',
                         borderRadius: getRoundCorner ? 25 : 0,
                         justifyContent: 'center',
                         alignItems: 'center',
                     }}>
                     <Text
                         style={{
-                            color: getSelectionMode == 1 ? 'white' : '#000000',
+                            color: getSelectionMode == 1 ? '121c47' : '#121c47',
                         }}>
                         {props.option1}
                     </Text>
@@ -69,14 +70,14 @@ const CustomSwitch = (props:toogle) => {
                     style={{
                         flex: 1,
 
-                        backgroundColor: getSelectionMode == 2 ? props.selectionColor : '#aedfa1',
+                        backgroundColor: getSelectionMode == 2 ? props.selectionColor : '#154c79',
                         borderRadius: getRoundCorner ? 25 : 0,
                         justifyContent: 'center',
                         alignItems: 'center',
                     }}>
                     <Text
                         style={{
-                            color: getSelectionMode == 2 ? 'white' : '#000000',
+                            color: getSelectionMode == 2 ? '121c47' : '#121c47',
                         }}>
                         {props.option2}
                     </Text>
@@ -88,9 +89,3 @@ const CustomSwitch = (props:toogle) => {
 }
 
 export default CustomSwitch;
-
-
-
-
-
-

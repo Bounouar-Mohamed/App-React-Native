@@ -50,7 +50,7 @@ export default function ButtonSwitch(props: toogle) {
                         option1={t("SignIn.0")}
                         option2={t("SignUp.0")}
                         onSelectSwitch={props.handleChange}
-                        selectionColor={'#48c029'} />
+                        selectionColor={'#96e5e8'} />
                 </View>
 
         </View>

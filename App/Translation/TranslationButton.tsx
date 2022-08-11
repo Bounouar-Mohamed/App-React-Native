@@ -24,7 +24,7 @@ export default function TranslationButton() {
             marginLeft: 0,
             flexDirection: "row",
             justifyContent: 'space-between',
-            backgroundColor: "#AEDFA1",
+            backgroundColor: "#154c79",
             borderTopLeftRadius: 10,
             borderBottomLeftRadius: 10,
             borderTopRightRadius: 10,
@@ -37,14 +37,14 @@ export default function TranslationButton() {
             width: 70,
             borderTopLeftRadius: 10,
             borderBottomLeftRadius: 10,
-            backgroundColor: currentLanguage === 'fr' ? "#48c029" : "#aedfa1",
+            backgroundColor: currentLanguage === 'fr' ? "#96e5e8" : "#154c79",
             borderTopRightRadius: currentLanguage === 'fr' ? 10 : 0,
             borderBottomRightRadius: currentLanguage === 'fr' ? 10 : 0,
         },
         TextFr: {
             marginLeft: 30,
             top: 10,
-            color: currentLanguage === 'fr' ? "#ffffff" : "#000000"
+            color: currentLanguage === 'fr' ? "#121c47" : "#121c47"
         },
 
 
@@ -52,7 +52,7 @@ export default function TranslationButton() {
             width: 70,
             borderTopRightRadius: 10,
             borderBottomRightRadius: 10,
-            backgroundColor: currentLanguage === 'en' ? "#48c029" : "#aedfa1",
+            backgroundColor: currentLanguage === 'en' ? "#96e5e8" : "#154c79",
             borderTopLeftRadius: currentLanguage === 'en' ? 10 : 0,
             borderBottomLeftRadius: currentLanguage === 'en' ? 10 : 0,
 
@@ -60,7 +60,7 @@ export default function TranslationButton() {
         TextEn: {
             marginLeft: 30,
             top: 10,
-            color: currentLanguage === 'en' ? "#ffffff" : "#000000",
+            color: currentLanguage === 'en' ? "#121c47" : "#121c47",
         },
     })
 

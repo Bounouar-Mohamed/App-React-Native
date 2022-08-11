@@ -1,10 +1,11 @@
-import React, { useState, useEffect, createContext, FC } from 'react'
+import * as React from 'react'
+import { useState, useEffect, createContext, FC } from 'react'
 
 
 
 
 type Text = {
-
+  Avatar:any;
   firstName: any;
   setFirstName: any;
   lastName: any;
@@ -27,12 +28,15 @@ export const UserProvider = (props: any) => {
   const [email, setEmail] = useState<Text>();
 
 
+  let Avatar = firstName + ' ' + lastName;
 
+  console.log('Contexte Avatar :', Avatar)
 
   return (
 
 
     <UserContext.Provider value={{
+      Avatar,
       firstName, setFirstName,
       lastName, setLastName,
       email, setEmail,

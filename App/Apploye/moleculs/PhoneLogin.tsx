@@ -74,7 +74,7 @@ export default function PhoneLogin () {
 
                 let error = "Email ou Mot de passe incorrect !!"
                 // console.log(error)
-                // Alert.alert(error)
+                Alert.alert(error)
             }
 
         }).catch(error => {
@@ -93,7 +93,6 @@ export default function PhoneLogin () {
             InfoUser?.setEmail(user!.email)
 
         }
-        console.log('yyyessss')
     }, [user]);
 
 
@@ -102,9 +101,10 @@ export default function PhoneLogin () {
 
     const styles = StyleSheet.create({
         Container: {
+            // backgroundColor:'#121c47',
             alignItems: 'center',
             position: 'absolute',
-            marginTop: 250,
+            marginTop: 290,
             marginLeft: 20
         },
 
@@ -113,6 +113,8 @@ export default function PhoneLogin () {
             width: 320,
             margin: 12,
             border: 'none',
+            borderColor:'#ffffff',
+            color:'#ffffff',
             padding: 10,
             borderBottomWidth: 1,
         },
@@ -127,6 +129,9 @@ export default function PhoneLogin () {
             margin: 12,
             padding: 10,
             borderBottomWidth: 1,
+            borderColor:'#ffffff',
+            color:'#ffffff',
+
         },
 
         ErrorPassword: {
@@ -139,13 +144,13 @@ export default function PhoneLogin () {
             marginTop: 40,
             width: 200,
             borderWidth: 1,
-            backgroundColor: '#48C029',
+            backgroundColor: '#96e5e8',
         },
 
         TextSubmit: {
             textAlign: 'center',
             marginTop: 10,
-            color: '#ffffff',
+            color: '#121c47',
         },
 
         ButtonGoogle: {
@@ -200,6 +205,7 @@ export default function PhoneLogin () {
                     <TextInput
                         style={styles.Email}
                         placeholder="E-mail..."
+                        placeholderTextColor="#ffffff" 
                         onBlur={onBlur}
                         onChangeText={onChange}
                         value={value}
@@ -222,6 +228,8 @@ export default function PhoneLogin () {
                     <TextInput
                         style={styles.Password}
                         placeholder={t('Password.0')}
+                        placeholderTextColor="#ffffff" 
+                        secureTextEntry={true}
                         onBlur={onBlur}
                         onChangeText={onChange}
                         value={value}

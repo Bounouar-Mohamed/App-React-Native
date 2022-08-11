@@ -12,7 +12,7 @@ export type Auth = {
 
 export const AuthContext = React.createContext<Auth>({
 
-    authData: "",
+    authData: "0",
     setAuthData: ""
 
 });

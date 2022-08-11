@@ -10,7 +10,7 @@ import CheckList from './CheckList';
 import axios from 'axios';
 import { UserContext } from '../../Contextes/ProfileContexte';
 import { AuthContext } from '../../Contextes/AuthContext';
-
+import Config from 'react-native-config';
 
 
 export interface Password {
@@ -69,10 +69,9 @@ export default function Registration(props: Password) {
 
         if (tpassword !== undefined) {
 
-            console.log("not undefined")
             setPassword(tpassword)
             setEmail(temail)
-            console.log('test', tpassword)
+            // console.log('test', tpassword)
 
         }
     }, [tpassword])
@@ -80,8 +79,9 @@ export default function Registration(props: Password) {
 
     const submitLogin = async (data: UserConnectForm) => {
 
+        const url_users = Config.API_URL + '/users'
 
-        axios.post('https://first-server-express.herokuapp.com/users', data)
+        axios.post(url_users, data)
 
             .then(response => {
                 if (response.data.message == "Login") {
@@ -98,8 +98,9 @@ export default function Registration(props: Password) {
                 console.error('Something went wrong!', error);
             });
 
+        const url_profile = Config.API_URL + '/users'
 
-        axios.get("https://first-server-express.herokuapp.com/profile")
+        axios.get(url_profile)
             .then(resp => {
 
                 setUser(resp.data.rows[0])
@@ -118,19 +119,21 @@ export default function Registration(props: Password) {
             InfoUser?.setLastName(user!.lastname)
             InfoUser?.setEmail(user!.email)
         }
-        console.log('uussseerrrrrrrrrr')
+
 
     }, [user]);
 
 
     const styles = StyleSheet.create({
         Container: {
+            // backgroundColor:'#121c47',
             alignItems: 'center',
             position: 'absolute',
-            marginTop: 250,
+            marginTop: 290,
             marginLeft: 20
         },
         AlignedItem: {
+
             position: 'absolute',
             marginTop: -50,
             flexDirection: "row",
@@ -140,6 +143,8 @@ export default function Registration(props: Password) {
             height: 40,
             width: 150,
             left: -10,
+            borderColor: '#ffffff',
+            color:'#ffffff',
             borderBottomWidth: 1,
         },
 
@@ -147,6 +152,8 @@ export default function Registration(props: Password) {
             height: 40,
             width: 150,
             left: 10,
+            borderColor: '#ffffff',
+            color:'#ffffff',
             borderBottomWidth: 1,
         },
         ErrorlastName: {
@@ -161,6 +168,8 @@ export default function Registration(props: Password) {
             margin: 12,
             border: 'none',
             padding: 10,
+            borderColor: '#ffffff',
+            color:'#ffffff',
             borderBottomWidth: 1,
         },
         ErrorEmail: {
@@ -171,6 +180,8 @@ export default function Registration(props: Password) {
             width: 320,
             margin: 12,
             padding: 10,
+            borderColor: '#ffffff',
+            color:'#ffffff',
             borderBottomWidth: 1,
         },
         ErrorPassword: {
@@ -182,12 +193,12 @@ export default function Registration(props: Password) {
             marginTop: 10,
             width: 200,
             borderWidth: 1,
-            backgroundColor: '#48C029',
+            backgroundColor: '#96e5e8',
         },
         TextSubmit: {
             textAlign: 'center',
             marginTop: 10,
-            color: '#ffffff',
+            color: '#121c47',
         },
 
         ButtonGoogle: {
@@ -225,7 +236,7 @@ export default function Registration(props: Password) {
             color: '#000000',
 
         },
-        
+
         Footer: {
             position: 'absolute',
             height: 70,
@@ -254,6 +265,7 @@ export default function Registration(props: Password) {
                         <TextInput
                             style={styles.firstName}
                             placeholder={t('FirstName.0')}
+                            placeholderTextColor="#ffffff"
                             onBlur={onBlur}
                             onChangeText={onChange}
                             value={value}
@@ -272,6 +284,7 @@ export default function Registration(props: Password) {
                         <TextInput
                             style={styles.lastName}
                             placeholder={t('LastName.0')}
+                            placeholderTextColor="#ffffff"
                             onBlur={onBlur}
                             onChangeText={onChange}
                             value={value}
@@ -294,6 +307,7 @@ export default function Registration(props: Password) {
                     <TextInput
                         style={styles.Email}
                         placeholder="E-mail..."
+                        placeholderTextColor="#ffffff"
                         onBlur={onBlur}
                         onChangeText={onChange}
 
@@ -318,6 +332,7 @@ export default function Registration(props: Password) {
                     <TextInput
                         style={styles.Password}
                         placeholder={t('Password.0')}
+                        placeholderTextColor="#ffffff"
                         secureTextEntry={true}
                         onBlur={onBlur}
                         value={value}
@@ -344,7 +359,7 @@ export default function Registration(props: Password) {
             </Pressable>
 
 
-            <Pressable onPress={handleSubmit(submitLogin)} style={styles.ButtonGoogle}>
+            <Pressable style={styles.ButtonGoogle}>
 
                 <ImageBackground source={require('./../../Assets/Google.png')} style={styles.BackgroundGoogle} resizeMode='contain' />
                 <Text style={styles.TextGoogle}>{t('ButtonGoogle.1')}</Text>
@@ -352,11 +367,11 @@ export default function Registration(props: Password) {
             </Pressable>
 
 
-            <View style={styles.Footer}>
+            {/* <View style={styles.Footer}>
 
                 <Footer />
 
-            </View>
+            </View> */}
 
         </View>
 

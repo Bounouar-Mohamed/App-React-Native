@@ -15,10 +15,7 @@ export default function Footer() {
 
         <View>
 
-            
                 <Text>{t("footer.0")}</Text>
-
-
 
         </View>
 
