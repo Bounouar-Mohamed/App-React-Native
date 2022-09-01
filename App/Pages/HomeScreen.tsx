@@ -11,7 +11,7 @@ import Config from "react-native-config";
 
 export default function HomeScreen(props: any) {
 
-    const navigation = useNavigation();
+    // const navigation = useNavigation();
 
     const styles = StyleSheet.create({
 
@@ -60,7 +60,7 @@ export default function HomeScreen(props: any) {
         TranslationButton: {
 
             justifyContent: 'flex-end',
-            top: '50%',
+            top: '48.5%',
             left: '40%'
         }
 

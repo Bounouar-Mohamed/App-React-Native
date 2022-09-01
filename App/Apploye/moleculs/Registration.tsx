@@ -3,21 +3,24 @@ import { useState, useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PasswordContext } from '../../Contextes/PasswordContexte';
 import { Text, View, TextInput, Alert, StyleSheet, Pressable, ImageBackground } from "react-native";
-import { useNavigation } from '@react-navigation/native';
 import { useForm, Controller } from "react-hook-form";
-import Footer from '../atoms/Footer';
 import CheckList from './CheckList';
 import axios from 'axios';
 import { UserContext } from '../../Contextes/ProfileContexte';
 import { AuthContext } from '../../Contextes/AuthContext';
 import Config from 'react-native-config';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+
+
+
+type mainScreenProp = StackNavigationProp<'Main'>;
 
 
 export interface Password {
 
     tpassword: string,
     setTpassword: string
-
 };
 
 export type UserConnectForm = {
@@ -26,15 +29,14 @@ export type UserConnectForm = {
     firstName: string;
     lastName: string;
     password: string;
-
 };
 
 type Profile = {
 
+    users_id:any
     firstname: string;
     lastname: string;
     email: string;
-
 }
 
 
@@ -61,8 +63,8 @@ export default function Registration(props: Password) {
     // const navigation = useNavigation<any>();
 
     const InfoUser = useContext(UserContext);
-    const Auth = useContext(AuthContext);
 
+    const navigation = useNavigation<mainScreenProp>();
 
 
     useEffect(() => {
@@ -82,13 +84,15 @@ export default function Registration(props: Password) {
         const url_users = Config.API_URL + '/users'
 
         axios.post(url_users, data)
-
             .then(response => {
+                console.log('resp server', response)
+
                 if (response.data.message == "Login") {
 
                     console.log("Login")
-                    // navigation.navigate('Profile')
-                    // Auth?.setAuthData("1")
+                    navigation.navigate('Profile')
+                    setUser(response.data.user)
+
                 }
                 else {
                     Alert.alert("Email déjà existant !!")
@@ -97,16 +101,6 @@ export default function Registration(props: Password) {
             }).catch(error => {
                 console.error('Something went wrong!', error);
             });
-
-        const url_profile = Config.API_URL + '/users'
-
-        axios.get(url_profile)
-            .then(resp => {
-
-                setUser(resp.data.rows[0])
-            })
-            .catch(err => { console.log("erreur:", err) })
-
     }
 
 
@@ -115,6 +109,8 @@ export default function Registration(props: Password) {
         if (user !== undefined) {
 
             console.log("user", user)
+        
+            InfoUser?.setIdUser(user!.users_id)
             InfoUser?.setFirstName(user!.firstname)
             InfoUser?.setLastName(user!.lastname)
             InfoUser?.setEmail(user!.email)
@@ -144,7 +140,7 @@ export default function Registration(props: Password) {
             width: 150,
             left: -10,
             borderColor: '#ffffff',
-            color:'#ffffff',
+            color: '#ffffff',
             borderBottomWidth: 1,
         },
 
@@ -153,7 +149,7 @@ export default function Registration(props: Password) {
             width: 150,
             left: 10,
             borderColor: '#ffffff',
-            color:'#ffffff',
+            color: '#ffffff',
             borderBottomWidth: 1,
         },
         ErrorlastName: {
@@ -169,7 +165,7 @@ export default function Registration(props: Password) {
             border: 'none',
             padding: 10,
             borderColor: '#ffffff',
-            color:'#ffffff',
+            color: '#ffffff',
             borderBottomWidth: 1,
         },
         ErrorEmail: {
@@ -181,7 +177,7 @@ export default function Registration(props: Password) {
             margin: 12,
             padding: 10,
             borderColor: '#ffffff',
-            color:'#ffffff',
+            color: '#ffffff',
             borderBottomWidth: 1,
         },
         ErrorPassword: {
@@ -365,13 +361,6 @@ export default function Registration(props: Password) {
                 <Text style={styles.TextGoogle}>{t('ButtonGoogle.1')}</Text>
 
             </Pressable>
-
-
-            {/* <View style={styles.Footer}>
-
-                <Footer />
-
-            </View> */}
 
         </View>
 

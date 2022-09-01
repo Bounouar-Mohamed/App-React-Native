@@ -30,7 +30,6 @@ const AuthProvider = (props: any) => {
         <AuthContext.Provider value={{
 
             authData, setAuthData
-
         }}>
 
             {props.children}

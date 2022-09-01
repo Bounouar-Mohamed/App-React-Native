@@ -11,7 +11,6 @@ const PostLogin = async (data: any) => {
     // const url = 'https://server-react-ohxipstsla-od.a.run.app/login'
 
     return await axios.post(url, data)
-
 }
 
 export default PostLogin;

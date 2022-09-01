@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { View, StyleSheet, Pressable, Text } from 'react-native';
+import { View, StyleSheet, Pressable, Text, ViewStyle, TextStyle, ImageBackground } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Acceuil from "./App/Pages/Acceuil";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Profile from "./App/Pages/Profile";
-import HomeScreen from "./App/Pages/HomeScreen";
+import Profile from './App/Pages/Profile';
+import HomeScreen from './App/Pages/HomeScreen';
 import UserProvider from "./App/Contextes/ProfileContexte";
 import { UserContext } from './App/Contextes/ProfileContexte';
 import PasswordProvider, { PasswordContext } from "./App/Contextes/PasswordContexte";
@@ -13,9 +13,7 @@ import AuthProvider from "./App/Contextes/AuthContext";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "./App/Contextes/AuthContext";
 import { Avatar } from "@react-native-material/core";
-import { profileAvatar } from './App/Pages/Profile';
 import FormsPage from "./App/Apploye/organisms/FormsPage";
-
 
 
 interface ShowModalProps {
@@ -73,7 +71,7 @@ const App = (props: ShowModalProps) => {
 
 
 
-              {Auth?.authData === "0" ?
+              {/* {Auth?.authData === "1" ?
                 <Stack.Navigator {...props}>
 
                   <Stack.Screen name="home" component={HomeScreen} options={{
@@ -89,23 +87,80 @@ const App = (props: ShowModalProps) => {
 
                   }} />
 
-                </Stack.Navigator>
+                </Stack.Navigator> */}
 
-                :
+              {/* : */}
 
-                <Tab.Navigator {...props}>
+              <Tab.Navigator  {...props} screenOptions={({ route }) => ({
+                tabBarShowLabel: false,
+                // headerStyle: {
+                //   backgroundColor: '#96e5e8'
+                // },
+                headerTitleAlign: 'center',
+                headerTransparent: true,
+                tabBarStyle: {
+                  position: 'absolute',
+                  backgroundColor: '#96e5e8',
+                  bottom: 25,
+                  height: '8%',
+                  left: '5%',
+                  right: '5%',
+                  marginTop: '-10%',
+                  borderRadius: 15
+                },
+
+                tabBarButton: [
+                  "acceuil",
+                  "login"
+                ].includes(route.name)
+                  ? () => {
+                    return null;
+                  }
+                  : undefined,
+              })}>
 
 
-                  <Tab.Screen name="Amazon" component={Acceuil}
-                  //  options={{ tabBarIcon: ({ color }) => ( <Icon name="home" color={color} size={26} />),}} 
-                  />
+                <Tab.Screen name="acceuil" component={HomeScreen} options={{
+                  headerShown: false,
+                  tabBarStyle: { display: "none" },
 
-                  <Tab.Screen name="Profile" component={Profile} options={{
-                    tabBarIcon: () => (<Avatar label={AvatarProfile?.Avatar} autoColor size={35} />)
-                  }} />
-                </Tab.Navigator>
+                }} />
 
-              }
+
+                <Tab.Screen name="login" component={FormsPage} options={{
+                  headerShown: false,
+                  tabBarStyle: { display: "none" },
+                  headerTransparent: true,
+
+                }} />
+
+
+                <Tab.Screen name="Amazon" component={Acceuil} options={{
+
+                  tabBarIcon: () => (
+                    <View style={{ justifyContent: 'center', alignContent: 'center' }}>
+                      <ImageBackground source={require('./App/Assets/home-free-icon-font.png')} style={{ width: 30, height: 30 }} resizeMode='contain' />
+                    </View>),
+
+
+                }}
+                />
+
+                <Tab.Screen name="Profile" component={Profile} options={{
+                  
+                  headerShown: false,
+
+                  tabBarIcon: () => (
+                    <View style={{ justifyContent: 'center', alignContent: 'center' }}>
+                      <ImageBackground source={require('./App/Assets/user-free-icon-font.png')} style={{ width: 30, height: 30 }} resizeMode='contain' />
+                    </View>),
+
+
+                }} />
+
+              </Tab.Navigator>
+
+              {/* } */}
 
             </NavigationContainer>
           </AuthProvider>

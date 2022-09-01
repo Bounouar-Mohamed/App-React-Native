@@ -45,5 +45,12 @@
 
   "switchLanguage": {
     "0": "Select language:"
+  },
+  
+  "Modal": {
+    "0": " Are you sure you want to disconnect?",
+    "1": "Cancel",
+    "2": "Yes"
   }
+
 }

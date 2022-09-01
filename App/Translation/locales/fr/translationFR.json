@@ -45,5 +45,11 @@
 
   "switchLanguage": {
     "0": "Sélectionner la langue:"
+  },
+
+  "Modal": {
+    "0": " Vous êtes sûr de vouloir vous déconnecter ?",
+    "1": "Annuler",
+    "2": "Oui"
   }
 }
