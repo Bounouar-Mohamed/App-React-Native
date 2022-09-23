@@ -6,10 +6,6 @@ import CustomSwitch from "../../Components/CustomSwitch";
 
 
 
-
-
-
-
 export interface toogle {
 
     handleChange: any

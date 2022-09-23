@@ -100,7 +100,7 @@ const Profile = () => {
 
     const Logout = () => {
         setModalVisible(!isModalVisible);
-        navigation.navigate('acceuil')
+        navigation.navigate('frontcover')
     };
 
 
@@ -250,26 +250,6 @@ const Profile = () => {
                     </Modal>
 
                     : <></>}
-
-
-                {/* <Modal isVisible={isModalVisible}>
-                    <View style={styles.ModalLogout}>
-
-                        <Text style={{ top: '10%', color: '#FFFFFF', fontSize: 20, textAlign: 'center' }}> {t("Modal.0")}</Text>
-
-                        <View style={styles.ChildModalLogout}>
-                            <Pressable onPress={toggleModal}>
-                                <Text style={{ color: '#121c47', fontSize: 20 }}>{t("Modal.1")} </Text>
-                            </Pressable>
-
-                            <Pressable onPress={() => Logout()}>
-                                <Text style={{ color: '#121c47', fontSize: 20 }}> {t("Modal.2")}</Text>
-                            </Pressable>
-                        </View>
-
-                    </View>
-                </Modal> */}
-
 
             </View>
         </View>

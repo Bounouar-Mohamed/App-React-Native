@@ -9,7 +9,7 @@ import Config from "react-native-config";
 
 
 
-export default function HomeScreen(props: any) {
+export default function frontCover(props: any) {
 
     // const navigation = useNavigation();
 
